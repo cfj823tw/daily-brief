@@ -2,8 +2,8 @@ name: Daily News Brief
 
 on:
   schedule:
-    # 每天 01:00 UTC (台灣時間 09:00 AM)
-    - cron: '0 1 * * *'
+    # 💡 技巧：改到 01:17 (台灣時間 09:17)，避開 00 分的全球排隊尖峰，能大幅減少延遲！
+    - cron: '17 1 * * *'
   workflow_dispatch:
 
 jobs:
@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      # 🚀 優化：將 checkout 升級到最新穩定版 v4
+      - uses: actions/checkout@v4
       
+      # 🚀 優化：這裡維持我們前幾步改好、運作正常的 setup-python@v4 與 '3.x'
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
